@@ -26,7 +26,7 @@ def game():
     gameplay = True
     movimentoXMeteoro = random.randrange(0, display_altura)
     movimentoYMeteoro = 0
-    velocidade = 1
+    velocidade = 10
     direcao = True
     posicaoXNave = 850
     posicaoYNave = 400
@@ -37,10 +37,10 @@ def game():
     meteoro = pygame.transform.scale(meteoro, (208,240))
     nave = pygame.image.load("resources/nave.png")
     nave = pygame.transform.scale(nave, (397,561.5))
-    larguraNave = 794
-    alturaNave = 1123
-    larguraMissel = 150
-    alturaMissel = 52
+    larguraNave = 397
+    alturaNave = 561.5
+    larguraMeteoro = 208
+    alturaMeteoro = 240
     velocidadeNave = 50
 
     while True:
@@ -58,7 +58,7 @@ def game():
                 elif event.key == pygame.K_DOWN:
                     movimentoYNave = velocidadeNave
                 elif event.key == pygame.K_RETURN:
-                    gameplay()
+                    game()
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT or event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                     movimentoXNave = 0
@@ -82,7 +82,7 @@ def game():
                 gameDisplay.blit(
                     meteoro, (movimentoXMeteoro, movimentoYMeteoro))
                 if direcao == True:
-                    if movimentoXMeteoro <= 800 - 150:
+                    if movimentoXMeteoro <= 1600 - larguraMeteoro:
                         movimentoXMeteoro = movimentoXMeteoro + velocidade
                     else:
                         direcao = False
@@ -95,7 +95,7 @@ def game():
                     else:           
                         direcao = True
                         pontos += 1
-                        movimentoYMeteoro = random.randrange(0, display_altura)
+                        movimentoXMeteoro = random.randrange(0, display_largura)
                         velocidade = velocidade + 1
                         
 
