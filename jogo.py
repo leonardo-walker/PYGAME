@@ -5,12 +5,13 @@ pygame.init()
 
 display_largura = 1600
 display_altura = 900
+tamanho_tela=(display_largura, display_altura)
 
 
 pygameDisplay = pygame.display
 pygameDisplay.set_caption("Comet Space Ship")
 
-gameDisplay = pygame.display.set_mode((display_largura, display_altura))
+gameDisplay = pygame.display.set_mode(tamanho_tela)
 gameEvents = pygame.event
 clock = pygame.time.Clock()
 
@@ -24,7 +25,7 @@ background = pygame.image.load("resources/bg.jpg")
 
 def game():
     gameplay = True
-    movimentoXMeteoro = random.randrange(0, display_largura)
+    movimentoXMeteoro = 0
     movimentoYMeteoro = 0
     velocidade = 10
     direcao = True
@@ -34,13 +35,13 @@ def game():
     movimentoYNave = 0
     pontos = 0
     meteoro = pygame.image.load("resources/meteoro.png")
-    meteoro = pygame.transform.scale(meteoro, (148.57, 171.428))
+    meteoro = pygame.transform.scale(meteoro, (149, 171))
     nave = pygame.image.load("resources/nave.png")
-    nave = pygame.transform.scale(nave, (177.33, 190.666))
-    larguraNave = 177.33
-    alturaNave = 190.666
-    larguraMeteoro = 148.57
-    alturaMeteoro = 171.428
+    nave = pygame.transform.scale(nave, (177, 191))
+    larguraNave = 177
+    alturaNave = 191
+    larguraMeteoro = 149
+    alturaMeteoro = 171
     velocidadeNave = 50
 
     while True:
