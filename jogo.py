@@ -24,23 +24,23 @@ background = pygame.image.load("resources/bg.jpg")
 
 def game():
     gameplay = True
-    movimentoXMeteoro = random.randrange(0, display_altura)
+    movimentoXMeteoro = random.randrange(0, display_largura)
     movimentoYMeteoro = 0
     velocidade = 10
     direcao = True
-    posicaoXNave = 850
-    posicaoYNave = 400
+    posicaoXNave = 740
+    posicaoYNave = 750
     movimentoXNave = 0
     movimentoYNave = 0
     pontos = 0
     meteoro = pygame.image.load("resources/meteoro.png")
-    meteoro = pygame.transform.scale(meteoro, (148.57,171.428))
+    meteoro = pygame.transform.scale(meteoro, (148.57, 171.428))
     nave = pygame.image.load("resources/nave.png")
-    nave = pygame.transform.scale(nave, (264.66,374.33))
-    larguraNave = 397
-    alturaNave = 561.5
-    larguraMeteoro = 208
-    alturaMeteoro = 240
+    nave = pygame.transform.scale(nave, (177.33, 190.666))
+    larguraNave = 177.33
+    alturaNave = 190.666
+    larguraMeteoro = 148.57
+    alturaMeteoro = 171.428
     velocidadeNave = 50
 
     while True:
@@ -81,25 +81,27 @@ def game():
                 gameDisplay.blit(nave, (posicaoXNave, posicaoYNave))
                 gameDisplay.blit(
                     meteoro, (movimentoXMeteoro, movimentoYMeteoro))
+
                 if direcao == True:
                     if movimentoYMeteoro <= 900 - alturaMeteoro:
                         movimentoYMeteoro = movimentoYMeteoro + velocidade
                     else:
-                        direcao = False
+                        direcao = True
                         pontos = pontos + 1
-                        movimentoXMeteoro = random.randrange(0, display_altura)
+                        movimentoXMeteoro = random.randrange(
+                            0, display_largura)
                         velocidade = velocidade + 1
                 else:
                     if movimentoYMeteoro >= 0:
                         movimentoYMeteoro = movimentoYMeteoro + velocidade
-                    else:           
+                    else:
                         direcao = True
                         pontos += 1
-                        movimentoYMeteoro = random.randrange(0, display_largura)
+                        movimentoXMeteoro = random.randrange(
+                            0, display_largura)
                         velocidade = velocidade + 1
-                        
 
-        pygame.display.update()
+        pygameDisplay.update()
         clock.tick(60)
 
 
