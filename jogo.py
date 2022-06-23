@@ -3,8 +3,8 @@ import random
 
 pygame.init()
 
-display_largura = 1600
-display_altura = 900
+display_largura = 800
+display_altura = 450
 tamanho_tela=(display_largura, display_altura)
 
 
@@ -21,16 +21,17 @@ pygameDisplay.set_icon(icone)
 white = (255, 255, 255)
 
 background = pygame.image.load("resources/bg.jpg")
+background = pygame.transform.scale(background, (800, 450))
 
 def perdeu(pontos):
     gameDisplay.blit(background, (0,0))
     pygame.mixer.music.stop()
     fonte = pygame.font.Font("freesansbold.ttf", 100)
     texto = fonte.render("Pontos: "+str(pontos), True, white)
-    gameDisplay.blit(texto, (575, 350))
+    gameDisplay.blit(texto, (287, 125))
     fonteContinue = pygame.font.Font("freesansbold.ttf", 30)
     textoContinue = fonteContinue.render("Press enter to restart...", True, white)
-    gameDisplay.blit(textoContinue, (625,500))
+    gameDisplay.blit(textoContinue, (312,250))
 
     pygameDisplay.update()
 
@@ -38,7 +39,7 @@ def game():
     gameplay = True
     movimentoXMeteoro = movimentoX = random.randrange(0, display_largura)
     movimentoYMeteoro = -185
-    velocidade = 50
+    velocidade = 10
     direcao = True
     posicaoXNave = 740
     posicaoYNave = 750
@@ -47,13 +48,13 @@ def game():
     pontos = 0
     pontosMorrer = 2
     meteoro = pygame.image.load("resources/meteoro.png")
-    meteoro = pygame.transform.scale(meteoro, (72, 136))
+    meteoro = pygame.transform.scale(meteoro, (36, 68))
     nave = pygame.image.load("resources/nave.png")
-    nave = pygame.transform.scale(nave, (177, 191))
-    larguraNave = 177
-    alturaNave = 191
-    larguraMeteoro = 72
-    alturaMeteoro = 136
+    nave = pygame.transform.scale(nave, (88, 95))
+    larguraNave = 88
+    alturaNave = 95
+    larguraMeteoro = 36
+    alturaMeteoro = 68
     velocidadeNave = 50
 
     while True:
@@ -98,7 +99,7 @@ def game():
                     
                 
                 if direcao == True:
-                    if movimentoYMeteoro < 900 :
+                    if movimentoYMeteoro < 450 :
                         movimentoYMeteoro = movimentoYMeteoro + velocidade
                         
                     
