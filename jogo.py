@@ -9,7 +9,7 @@ tamanho_tela=(display_largura, display_altura)
 
 
 pygameDisplay = pygame.display
-pygameDisplay.set_caption("Comet Space Ship")
+pygameDisplay.set_caption("Comet SpaceShip")
 
 gameDisplay = pygame.display.set_mode(tamanho_tela)
 gameEvents = pygame.event
