@@ -38,7 +38,7 @@ def game():
     gameplay = True
     movimentoXMeteoro = movimentoX = random.randrange(0, display_largura)
     movimentoYMeteoro = -185
-    velocidade = 5
+    velocidade = 50
     direcao = True
     posicaoXNave = 740
     posicaoYNave = 750
