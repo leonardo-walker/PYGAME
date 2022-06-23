@@ -25,19 +25,19 @@ background = pygame.image.load("resources/bg.jpg")
 def perdeu(pontos):
     gameDisplay.blit(background, (0,0))
     pygame.mixer.music.stop()
-    fonte = pygame.font.Font("freesansbold.ttf", 25)
+    fonte = pygame.font.Font("freesansbold.ttf", 100)
     texto = fonte.render("Pontos: "+str(pontos), True, white)
-    gameDisplay.blit(texto, (450, 90))
-    fonteContinue = pygame.font.Font("freesansbold.ttf", 20)
-    textoContinue = fonteContinue.render("press enter to restart", True, white)
-    gameDisplay.blit(textoContinue, (575,115))
+    gameDisplay.blit(texto, (575, 350))
+    fonteContinue = pygame.font.Font("freesansbold.ttf", 30)
+    textoContinue = fonteContinue.render("Press enter to restart...", True, white)
+    gameDisplay.blit(textoContinue, (625,500))
 
     pygameDisplay.update()
 
 def game():
     gameplay = True
     movimentoXMeteoro = movimentoX = random.randrange(0, display_largura)
-    movimentoYMeteoro = -150
+    movimentoYMeteoro = -185
     velocidade = 5
     direcao = True
     posicaoXNave = 740
@@ -62,18 +62,18 @@ def game():
                 pygame.quit()
                 quit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
+                if event.key == pygame.K_LEFT or event.key == pygame.K_a :
                     movimentoXNave = -velocidadeNave
-                elif event.key == pygame.K_RIGHT:
+                elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:
                     movimentoXNave = velocidadeNave
-                elif event.key == pygame.K_UP:
+                elif event.key == pygame.K_UP or event.key == pygame.K_w:
                     movimentoYNave = -velocidadeNave
-                elif event.key == pygame.K_DOWN:
+                elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
                     movimentoYNave = velocidadeNave
                 elif event.key == pygame.K_RETURN:
                     game()
             if event.type == pygame.KEYUP:
-                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT or event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT or event.key == pygame.K_UP or event.key == pygame.K_DOWN or event.key == pygame.K_a or event.key == pygame.K_w or event.key == pygame.K_s or event.key == pygame.K_d :
                     movimentoXNave = 0
                     movimentoYNave = 0
 
@@ -103,7 +103,7 @@ def game():
                         
                     
                     else:
-                        movimentoYMeteoro = 0
+                        movimentoYMeteoro = -185
                         movimentoXMeteoro = random.randrange(0, display_largura-larguraMeteoro)
                         velocidade = velocidade + 1
                         pontos+=1
@@ -120,7 +120,7 @@ def game():
                 if naveRect.colliderect(meteoroRect) == True:
                     gameplay = True
                     pontosMorrer +=1
-                    movimentoYMeteoro = 0
+                    movimentoYMeteoro = -185
                     movimentoXMeteoro = random.randrange(0, display_largura)
                 if pontosMorrer == 2:
                     perdeu(pontos)
