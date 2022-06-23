@@ -45,7 +45,7 @@ def game():
     movimentoXNave = 0
     movimentoYNave = 0
     pontos = 0
-    pontosMorrer = 0
+    pontosMorrer = 2
     meteoro = pygame.image.load("resources/meteoro.png")
     meteoro = pygame.transform.scale(meteoro, (72, 136))
     nave = pygame.image.load("resources/nave.png")
@@ -107,7 +107,14 @@ def game():
                         movimentoXMeteoro = random.randrange(0, display_largura-larguraMeteoro)
                         velocidade = velocidade + 1
                         pontos+=1
-                        
+                
+                fonte = pygame.font.Font('freesansbold.ttf', 20)
+                texto = fonte.render("Pontos: "+str(pontos), True, white)
+                gameDisplay.blit(texto, (20, 5))
+                vidas = fonte.render("Vidas: "+str(pontosMorrer), True, white)
+                gameDisplay.blit(vidas, (20, 30))
+
+       
                 #colisão        
                 naveRect = nave.get_rect()
                 naveRect.x = posicaoXNave
@@ -119,10 +126,10 @@ def game():
 
                 if naveRect.colliderect(meteoroRect) == True:
                     gameplay = True
-                    pontosMorrer +=1
+                    pontosMorrer -=1
                     movimentoYMeteoro = -185
                     movimentoXMeteoro = random.randrange(0, display_largura)
-                if pontosMorrer == 2:
+                if pontosMorrer == 0:
                     perdeu(pontos)
                     gameplay = False
                 else:    
