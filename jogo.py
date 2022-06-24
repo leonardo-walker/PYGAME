@@ -1,5 +1,8 @@
 import pygame
 import random
+import os
+
+os.system("cls")
 
 nome = input('Nome: ')
 email = input('Email: ')
