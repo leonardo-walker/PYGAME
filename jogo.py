@@ -130,7 +130,7 @@ def game():
                 else:
                     movimentoYMeteoro = -185
                     movimentoXMeteoro = random.randrange(0, display_largura-larguraMeteoro)
-                    velocidade = velocidade + 0.8
+                    velocidade = velocidade + 0.6
                     pontos+=1
             
             fonte = pygame.font.Font('freesansbold.ttf', 20)
