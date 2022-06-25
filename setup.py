@@ -1,7 +1,7 @@
 import cx_Freeze
 
 arquivo = [cx_Freeze.Executable(
-    script="CometSpaceShip.py", icon="resources/icon.ico"
+    script="jogo.py", icon="resources/icon.ico"
 )]
 
 
